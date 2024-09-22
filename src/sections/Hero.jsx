@@ -1,6 +1,8 @@
 import { PerspectiveCamera } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
 import MyHackerRoom from "../Components/MyHackerRoom";
+import { Suspense } from "react";
+import CanvasLoader from "../Components/CanvasLoader";
 
 
 export default function Hero() {
@@ -13,7 +15,9 @@ export default function Hero() {
             <div className="w-full h-full absolute inset-0">
                 <Canvas className="w-full h-full0">
                     <PerspectiveCamera makeDefault position={[0, 0, 30]} />
-                    <MyHackerRoom />
+                    <Suspense fallback={<CanvasLoader />}>
+                        <MyHackerRoom />
+                    </Suspense>
                 </Canvas>
             </div>
 
