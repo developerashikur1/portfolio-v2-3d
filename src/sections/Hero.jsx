@@ -38,6 +38,7 @@ export default function Hero() {
                                 scale={[controls.positionX, controls.positionY, controls.positionZ]}
                             />
                             <Leva />
+                            
                             <ambientLight intensity={1} />
                             <directionalLight position={[10, 10, 10]} intensity={0.5} />
                         </Suspense>
