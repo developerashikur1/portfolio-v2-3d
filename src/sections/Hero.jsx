@@ -67,6 +67,7 @@ export default function Hero() {
                         </Suspense>
                     </Canvas>
                 </div>
+                
             </div>
         </section>
     )
