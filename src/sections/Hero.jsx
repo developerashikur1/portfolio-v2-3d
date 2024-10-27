@@ -4,6 +4,7 @@ import MyHackerRoom from "../Components/MyHackerRoom";
 import { Suspense } from "react";
 import CanvasLoader from "../Components/CanvasLoader";
 import { Leva, useControls } from "leva";
+import { useMediaQuery } from "react-responsive";
 
 
 
@@ -45,7 +46,11 @@ export default function Hero() {
             max: 10,
         },
     })
-    
+
+    const mediaQuery = useMediaQuery({ maxWidth: 768 });
+
+    console.log(mediaQuery);
+
     return (
         <section className="min-h-screen border-blue-500 flex flex-col relative">
             <div className="w-full mx-auto flex flex-col sm:mt-36 c-space gap-3">
@@ -54,20 +59,23 @@ export default function Hero() {
 
                 <div className="w-full h-full absolute inset-0">
                     <Leva />
-                    <Canvas className="w-full h-full0">
-                        <PerspectiveCamera makeDefault position={[0, 0, 30]} />
+                    <Canvas className="w-full h-full">
                         <Suspense fallback={<CanvasLoader />}>
+                            <PerspectiveCamera makeDefault position={[0, 0, 30]} />
+
                             <MyHackerRoom
-                                position={[controls.positionX, controls.positionY, controls.positionZ]}
-                                rotation={[controls.rotationX, controls.rotationY, controls.rotationZ]}
-                                scale={[controls.scale, controls.scale, controls.scale]}
+                                // position={[controls.positionX, controls.positionY, controls.positionZ]}
+                                // rotation={[controls.rotationX, controls.rotationY, controls.rotationZ]}
+                                // scale={[controls.scale, controls.scale, controls.scale]}
+                                position={[2, -8, 2]}
+                                rotation={[0, -Math.PI, 0]}
+                                scale={[0.1, 0.1, 0.1]}
                             />
                             <ambientLight intensity={1} />
                             <directionalLight position={[10, 10, 10]} intensity={0.5} />
                         </Suspense>
                     </Canvas>
                 </div>
-                
             </div>
         </section>
     )
